@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+#defaultsvmsconfigs
+Vagrant.configure("2") do |c|
+    c.vm.box = "centos/8"
+    c.vm.box_check_update = true
+    c.vm.provider "virtualbox" do |c|
+      c.memory = 2048
+      c.cpus = 4
+      c.gui = false
+    end
+    c.vm.define "samba" do |s|
+      s.vm.hostname = "samba01"
+      s.vm.network "public_network", ip: "10.2.0.201", bridge: "enp7s0"
+      s.vm.provision "shell", path: "config/update.sh"
+      s.vm.provision "shell", inline: "echo 'terminou a bagaca'"
+    end
+    #c.vm.provision "ansible" do |a|
+    #  a.playbook = "config/update.sh"
+    #  a.playbook = "config/update.yml"
+    #end
+    #    c.hostname = "samba01"
