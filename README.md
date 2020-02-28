@@ -1,2 +1,2 @@
-# samba
-Scripts to install and configure samba with centos 8
+# Artifactory
+Scripts to install and configure artifactory with centos 8
